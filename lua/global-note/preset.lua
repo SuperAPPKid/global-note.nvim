@@ -68,7 +68,7 @@ local new = function(options)
       p:toggle()
     end, {
       nargs = 0,
-      desc = desc
+      desc = desc,
     })
   end
 
@@ -168,6 +168,7 @@ local new = function(options)
     local window_id =
       vim.api.nvim_open_win(buffer_id, true, expanded_preset.window_config)
     vim.w[window_id].global_note_window = expanded_preset.name
+    vim.bo[buffer_id].buflisted = false
 
     if expanded_preset.autosave then
       local save_file = function()
